@@ -3,6 +3,8 @@ package com.plcoding.weatherapp.domain.weather
 import androidx.annotation.DrawableRes
 import com.plcoding.weatherapp.R
 
+/// Base for the Open Metheo Weather API
+
 sealed class WeatherType(
     val weatherDesc: String,
     @DrawableRes val iconRes: Int
