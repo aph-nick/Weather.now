@@ -47,6 +47,7 @@ fun WeatherDataDto.toWeatherDataMap(): Map<Int, List<WeatherData>> {
 
 fun WeatherDto.toWeatherInfo(): WeatherInfo {
 
+    // TO DO!!!: Handle a case where if the time is 23:58 you handle 00:00 of the next day
     // TO DO: Map Weatherdata for upcoming days in a week
 
     val weatherDataMap = weatherData.toWeatherDataMap()
