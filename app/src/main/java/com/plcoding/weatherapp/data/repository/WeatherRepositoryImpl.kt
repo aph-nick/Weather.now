@@ -11,6 +11,10 @@ class WeatherRepositoryImpl @Inject constructor(
 ): WeatherRepository {
 
     override suspend fun getWeatherData(lat: Double, long: Double): Resource<WeatherInfo> {
+        return try {
 
+        } catch(e: Exception) {
+
+        }
     }
 }
