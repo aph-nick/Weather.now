@@ -19,6 +19,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.plcoding.weatherapp.R
@@ -40,7 +41,8 @@ fun WeatherCard(
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(16.dp)
+                    .padding(16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
                     text = "Today ${
@@ -76,7 +78,23 @@ fun WeatherCard(
                     WeatherDataDisplay(
                         value = data.pressure.roundToInt(),
                         unit = "hpa",
-                        icon = ImageVector.vectorResource(id = R.drawable.ic_pressure)
+                        icon = ImageVector.vectorResource(id = R.drawable.ic_pressure),
+                        iconTint = Color.White,
+                        textStyle = TextStyle(color = Color.White)
+                    )
+                    WeatherDataDisplay(
+                        value = data.humidity.roundToInt(),
+                        unit = "%",
+                        icon = ImageVector.vectorResource(id = R.drawable.ic_drop),
+                        iconTint = Color.White,
+                        textStyle = TextStyle(color = Color.White)
+                    )
+                    WeatherDataDisplay(
+                        value = data.windSpeed.roundToInt(),
+                        unit = "km/h",
+                        icon = ImageVector.vectorResource(id = R.drawable.ic_wind),
+                        iconTint = Color.White,
+                        textStyle = TextStyle(color = Color.White)
                     )
                 }
             }
