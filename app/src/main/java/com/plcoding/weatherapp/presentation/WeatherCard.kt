@@ -23,6 +23,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.plcoding.weatherapp.R
+import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import kotlin.math.roundToInt
 
@@ -45,9 +46,9 @@ fun WeatherCard(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = "Today ${
-                        data.time.format(
-                            DateTimeFormatter.ofPattern("YYYY-MM-DDThh:mm")
+                    text = "Today: ${
+                        LocalDateTime.now().format(
+                            DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
                         )
                     }",
                     modifier = Modifier.align(Alignment.Start),

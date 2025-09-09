@@ -46,17 +46,16 @@ fun WeatherDataDto.toWeatherDataMap(): Map<Int, List<WeatherData>> {
 }
 
 fun WeatherDto.toWeatherInfo(): WeatherInfo {
-
-    // TO DO!!!: Handle a case where if the time is 23:58 you handle 00:00 of the next day
-    // TO DO: Map Weatherdata for upcoming days in a week
-
     val weatherDataMap = weatherData.toWeatherDataMap()
     val now = LocalDateTime.now()
-    val currentWeatherData = weatherDataMap[0]?.find { // Index 0 = Current Day
-        // Rounds Up/Down the hours
-        val hour = if(now.minute < 30) now.hour else now.hour + 1
-        it.time.hour == hour
+
+    val roundedHour = if (now.minute < 30) now.hour else (now.hour + 1) % 24
+    val dayShift = if (now.hour == 23 && now.minute >= 30) 1 else 0
+
+    val currentWeatherData = weatherDataMap[dayShift]?.find {
+        it.time.hour == roundedHour
     }
+
     return WeatherInfo(
         weatherDataPerDay = weatherDataMap,
         currentWeatherData = currentWeatherData

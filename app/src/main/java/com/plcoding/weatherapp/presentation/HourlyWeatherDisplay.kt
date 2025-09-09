@@ -11,7 +11,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.plcoding.weatherapp.R
@@ -36,14 +35,19 @@ fun HourlyWeatherDisplay(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceBetween
     ) {
-        val currentHour = LocalDateTime.now()
+        val now = LocalDateTime.now()
+        val roundedHour = if (now.minute >= 30) {
+            (now.hour + 1) % 24
+        } else {
+            now.hour
+        }
         Text(
             text = formattedTime,
             color = Color.LightGray,
-            fontWeight = if (weatherData.time == currentHour) {
+            fontWeight = if (weatherData.time.hour == roundedHour) {
                 FontWeight.Bold
             } else {
-                FontWeight.Thin
+                FontWeight.Normal
             }
         )
         val hour = weatherData.time.hour
