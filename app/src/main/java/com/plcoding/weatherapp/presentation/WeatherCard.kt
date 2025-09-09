@@ -47,10 +47,10 @@ fun WeatherCard(
                 Text(
                     text = "Today ${
                         data.time.format(
-                            DateTimeFormatter.ofPattern("HH:mm")
+                            DateTimeFormatter.ofPattern("YYYY-MM-DDThh:mm")
                         )
                     }",
-                    modifier = Modifier.align(Alignment.End),
+                    modifier = Modifier.align(Alignment.Start),
                     color = Color.White
                 )
                 Spacer(modifier = Modifier.height(16.dp))

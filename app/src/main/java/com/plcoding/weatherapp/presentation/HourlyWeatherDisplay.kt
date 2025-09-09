@@ -11,11 +11,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.plcoding.weatherapp.R
 import com.plcoding.weatherapp.domain.weather.WeatherData
 import com.plcoding.weatherapp.domain.weather.WeatherType
+import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 @Composable
@@ -34,9 +36,15 @@ fun HourlyWeatherDisplay(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceBetween
     ) {
+        val currentHour = LocalDateTime.now()
         Text(
             text = formattedTime,
-            color = Color.LightGray
+            color = Color.LightGray,
+            fontWeight = if (weatherData.time == currentHour) {
+                FontWeight.Bold
+            } else {
+                FontWeight.Thin
+            }
         )
         val hour = weatherData.time.hour
         val iconRes = when {
