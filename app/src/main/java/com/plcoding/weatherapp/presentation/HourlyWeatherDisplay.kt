@@ -13,7 +13,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.plcoding.weatherapp.R
 import com.plcoding.weatherapp.domain.weather.WeatherData
+import com.plcoding.weatherapp.domain.weather.WeatherType
 import java.time.format.DateTimeFormatter
 
 @Composable
@@ -36,8 +38,14 @@ fun HourlyWeatherDisplay(
             text = formattedTime,
             color = Color.LightGray
         )
+        val hour = weatherData.time.hour
+        val iconRes = when {
+            weatherData.weatherType == WeatherType.ClearSky && hour in 6..19 -> R.drawable.ic_sunny
+            weatherData.weatherType == WeatherType.ClearSky && (hour < 6 || hour > 19) -> R.drawable.ic_moon
+            else -> weatherData.weatherType.iconRes
+        }
         Image(
-            painter = painterResource(id = weatherData.weatherType.iconRes),
+            painter = painterResource(id = iconRes),
             contentDescription = null,
             modifier = Modifier.width(40.dp)
         )
