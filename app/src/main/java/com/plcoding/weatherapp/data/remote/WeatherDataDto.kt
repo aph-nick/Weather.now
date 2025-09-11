@@ -14,4 +14,6 @@ data class WeatherDataDto(
     val windSpeeds: List<Double>,
     @field:Json(name = "relativehumidity_2m")
     val humidities: List<Double>
+
+    //TODO: Introduce uv index and sunset/sunrise
 )
