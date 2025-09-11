@@ -34,5 +34,7 @@ Weather.Now is a modern weather app for Android, written in **Kotlin** using **J
 
 ## Pictures
 
-<img width="946" height="2049" alt="image" src="https://github.com/user-attachments/assets/0fdd81f5-2d99-4891-a9fb-1a121df05941" />
+<img width="946" height="2049" alt="image" src="https://github.com/user-attachments/assets/d316106f-0125-4583-88df-cdddd4c85cfc" />
+
+<img width="946" height="2049" alt="image" src="https://github.com/user-attachments/assets/232f7325-6846-4630-8591-3cb7e9b607b9" />
 
