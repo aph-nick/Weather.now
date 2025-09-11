@@ -23,17 +23,18 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.plcoding.weatherapp.R
+import com.plcoding.weatherapp.domain.weather.WeatherData
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import kotlin.math.roundToInt
 
 @Composable
 fun WeatherCard(
-    state: WeatherState,
+    data: WeatherData?,
     backgroundColor: Color,
     modifier: Modifier = Modifier
 ) {
-    state.weatherInfo?.currentWeatherData?.let { data ->
+    data?.let {
         Card(
             backgroundColor = backgroundColor,
             shape = RoundedCornerShape(10.dp),
@@ -46,11 +47,9 @@ fun WeatherCard(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = "Today: ${
-                        LocalDateTime.now().format(
-                            DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
-                        )
-                    }",
+                    text = it.time.format(
+                        DateTimeFormatter.ofPattern("yyyy-MM-dd")
+                    ),
                     modifier = Modifier.align(Alignment.Start),
                     color = Color.White
                 )

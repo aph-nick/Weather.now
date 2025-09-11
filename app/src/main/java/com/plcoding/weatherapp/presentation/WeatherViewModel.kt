@@ -31,7 +31,7 @@ class WeatherViewModel @Inject constructor(
                 when(val result = repository.getWeatherData(location.latitude, location.longitude)) {
                     is Resource.Success -> {
                         state = state.copy(
-                            weatherInfo = result.data,
+                            weatherDataPerDay = result.data?.weatherDataPerDay,
                             isLoading = false,
                             error = null
                         )
@@ -39,7 +39,7 @@ class WeatherViewModel @Inject constructor(
 
                     is Resource.Error -> {
                         state = state.copy(
-                            weatherInfo = null,
+                            weatherDataPerDay = null,
                             isLoading = false,
                             error = result.message
                         )
@@ -51,6 +51,19 @@ class WeatherViewModel @Inject constructor(
                     error = "Couldn't retrieve Location, make sure to grant permission and enable GPS"
                 )
             }
+        }
+    }
+
+    fun nextDay() {
+        val maxIndex = state.weatherDataPerDay?.size ?: 0
+        if (state.currentDayIndex < maxIndex - 1) {
+            state = state.copy(currentDayIndex = state.currentDayIndex + 1)
+        }
+    }
+
+    fun previousDay() {
+        if (state.currentDayIndex > 0) {
+            state = state.copy(currentDayIndex = state.currentDayIndex - 1)
         }
     }
 }
