@@ -28,9 +28,8 @@ Weather.Now is a modern weather app for Android, written in **Kotlin** using **J
 ## To be Added
 
 - Current Localisation display
-- Ability to pick past/upcoming days from a calendar
 - Improve UI with simple background Images indicating weather
-- Display Sunset and Sunrise time
+- Display Sunset and Sunrise time + UV Index
 - Based on susnet/sunrise change the theme to light/dark
 
 ## Pictures
