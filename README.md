@@ -1,6 +1,6 @@
 # Weather.Now
 
-Weather.Now is a modern weather app for Android, written in **Kotlin** using **Jetpack Compose**. The app uses the [Open Meteo API](https://open-meteo.com) to fetch weather data and display it in a simple and user-friendly way.
+Weather.Now is a modern weather app for Android, written in **Kotlin** using **Jetpack Compose**. The app uses the [Open Meteo API](https://open-meteo.com) to fetch weather data and display it in a simple and user-friendly way. Built following the Android Development course by ```Philipp Lackner```, with some tweaks and improvements on my side. 
 
 ---
 
